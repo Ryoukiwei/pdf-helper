@@ -1,13 +1,25 @@
 # pdf-helper
 
-A PDF image workflow tool built with Python 3.12.
+[![Python](https://img.shields.io/badge/python-3.12+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![CLI](https://img.shields.io/badge/interface-Typer-009688)](https://typer.tiangolo.com/)
+[![Formatter: Ruff](https://img.shields.io/badge/style-ruff-1D9BF0)](https://docs.astral.sh/ruff/)
+
+A PDF image workflow tool built with Python 3.12. 📄🖼️
 
 It provides:
 - `extract`: extract embedded images from PDF, with render fallback
 - `crop`: interactive image crop (single or batch)
 - `pipeline`: extract + crop in one command
 
-## Requirements
+## ✨ Features
+
+- Fast PDF image extraction with fallback page rendering
+- Interactive crop GUI with zoom/pan/rotate/auto-trim
+- Batch crop workflow with session resume support
+- One-step extract + crop pipeline command
+
+## 📦 Requirements
 
 - Python 3.12+
 - `uv`
@@ -15,14 +27,14 @@ It provides:
 
 Dependencies are managed in `pyproject.toml`.
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 uv sync
 uv run pdf-img --help
 ```
 
-## CLI Overview
+## 🛠️ CLI Overview
 
 ```bash
 uv run pdf-img --help
@@ -31,7 +43,7 @@ uv run pdf-img crop --help
 uv run pdf-img pipeline --help
 ```
 
-### Shell completion (Typer)
+### Shell Completion (Typer)
 
 ```bash
 # bash/zsh/fish/powershell are supported
@@ -39,7 +51,7 @@ uv run pdf-img --install-completion
 uv run pdf-img --show-completion
 ```
 
-## Extract Command
+## 📤 Extract Command
 
 Extract images from PDF and generate a manifest JSON.
 
@@ -56,7 +68,7 @@ Common options:
 - `--zip`: also create zip archive
 - `--zip-path`: custom zip output path
 
-## Crop Command
+## ✂️ Crop Command
 
 Interactive cropping with tkinter canvas drag-select.
 
@@ -80,26 +92,26 @@ GUI controls:
   - `Alt + Arrow` = resize one edge
   - `[` / `]` = shrink / expand box
 
-### Auto Trim behavior
+### Auto Trim Behavior
 
 - On each image open, GUI computes a suggested crop box.
 - If `--carry-box` is enabled and prior box exists, carry-box is used first.
 - Otherwise, auto-trim suggestion is used as initial box.
 - `Auto Trim` button recalculates and applies bbox with current threshold/padding.
 
-### Single image crop
+### Single Image Crop
 
 ```bash
 uv run pdf-img crop --input in/page1.png --output out/page1__crop.png
 ```
 
-### Batch crop from manifest
+### Batch Crop from Manifest
 
 ```bash
 uv run pdf-img crop --manifest out/sample_manifest.json --out-dir out
 ```
 
-### Batch crop from directory
+### Batch Crop from Directory
 
 ```bash
 uv run pdf-img crop --dir out/images --out-dir out
@@ -107,7 +119,7 @@ uv run pdf-img crop --dir out/images --out-dir out
 
 Supported input extensions: `.jpg`, `.jpeg`, `.png`.
 
-### Crop options
+### Crop Options
 
 - Source and preview:
   - `--source auto|extracted|rendered` (manifest mode)
@@ -122,14 +134,14 @@ Supported input extensions: `.jpg`, `.jpeg`, `.png`.
   - `--overwrite / --no-overwrite` (default: `--no-overwrite`)
   - `--out-subdir <name>` place outputs under `--out-dir/<name>/`
 
-### Batch behavior notes
+### Batch Behavior Notes
 
 - `__crop` in input filename is skipped automatically.
 - If output file exists and `--no-overwrite`, job is skipped and printed.
 - Session state is saved in `crop_session.json` under output directory.
 - Rerun same batch command to resume from session.
 
-## Pipeline Command
+## 🔁 Pipeline Command
 
 Run extract and crop in one command.
 
@@ -150,7 +162,7 @@ uv run pdf-img pipeline input.pdf -o out --source rendered
 uv run pdf-img pipeline input.pdf -o out --format jpeg --jpeg-quality 85 --out-subdir cropped
 ```
 
-## Project Structure
+## 🗂️ Project Structure
 
 ```text
 src/pdf_img_tool/
@@ -165,11 +177,11 @@ src/pdf_img_tool/
   utils.py      # shared utility helpers
 ```
 
-## Notes
+## 📝 Notes
 
 - GUI crop requires a local graphical session.
 - On headless environments, GUI crop cannot open a window.
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE).
+This project is licensed under the MIT License. See [LICENSE](LICENSE). ⚖️
