@@ -1,0 +1,51 @@
+[project]
+name = "pdf-helper"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pillow>=12.1.1",
+    "pymupdf>=1.27.1",
+    "typer>=0.24.1",
+]
+
+[project.scripts]
+pdf-img = "pdf_img_tool.typer_app:app"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "W",
+    "F",
+    "I",
+    "B",
+    "UP",
+    "SIM",
+    "C4",
+    "ISC",
+    "PIE",
+    "RET",
+    "RUF",
+    "N",
+    "PTH",
+    "ARG",
+    "ANN",
+]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
