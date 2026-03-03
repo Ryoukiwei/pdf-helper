@@ -169,3 +169,7 @@ src/pdf_img_tool/
 
 - GUI crop requires a local graphical session.
 - On headless environments, GUI crop cannot open a window.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
